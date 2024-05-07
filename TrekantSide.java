@@ -1,6 +1,6 @@
 import processing.core.*;
 
-public class TrekantSide{
+public class TrekantSide extends Side{
 
     private PApplet p;
 
@@ -9,7 +9,8 @@ public class TrekantSide{
     private float x1, x2, x3;
     private float y1, y2, y3;
     
-    public TrekantSide(PApplet p, ButtonPicture bp, float x1, float x2, float x3, float y1, float y2, float y3){
+    public TrekantSide(PApplet p, ButtonPicture bp, float x1, float x2, float x3, float y1, float y2, float y3, PImage b, float w, float h){
+        super(p,b,w,h);
         this.p    = p;
         backArrow = bp;
         this.x1   = x1;
@@ -21,7 +22,14 @@ public class TrekantSide{
     }
 
     public void displayTrekantSide(){
-        backArroy.display();
+        super.displayBackground();
+        backArrow.display();
+        p.fill(255);
+        p.println(x1 + ", " + x2 + ", " + x3 + ", " + y1 + ", " + y2 + ", " + y3);
         p.triangle(x1,y1,x2,y2,x3,y3);
+    }
+
+    public void handleButtonClicks(){
+        backArrow.mouseClickDetection();
     }
 }
