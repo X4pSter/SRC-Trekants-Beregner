@@ -1,22 +1,38 @@
-Button test;
-ButtonPicture test2;
+boolean mainMenuSelected = true,trekantBeregnerSelected = false,trekantTeoriSelected = false;
+
+Button knapTrekantBeregner,knapTrekantTeori;
+
+MainMenu mainMenu;
+
+float buttonW = 100,buttonH = 90;
 
 void setup(){
-    size(500,500);
-    test  = new Button(this,100,100,50,50,"test","test");
-    test2 = new ButtonPicture(this,200,100,25,25,loadImage("returnArrow.png"),"test");
+    fullScreen();
+    
+    knapTrekantBeregner = new Button(this,width/2,300,buttonW,buttonH,"Trekants beregner","selectTrekantBeregner",60,20);
+    knapTrekantTeori    = new Button(this,width/2,450,buttonW,buttonH,"Teori om trekanter","selectTrekantTeori",60,20);
+
+    mainMenu = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
 }
 
 void draw(){
-    test.display();
-    test2.display();
+    if(mainMenuSelected){
+        mainMenu.mainMenuDisplay();
+    }
 }
 
 void mousePressed(){
-    test.mouseClickDetection();
-    test2.mouseClickDetection();
+    
 }
 
-void test(){
-    println("works");
+void selectMainMenu(){
+    
+}
+
+void selectTrekantBeregner(){
+    
+}
+
+void selectTrekantTeori(){
+
 }
