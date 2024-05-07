@@ -5,6 +5,8 @@ Button knapTrekantBeregner,knapTrekantTeori;
 MainMenu mainMenu;
 
 float buttonW = 100,buttonH = 90;
+float trekantX1 = width/2 - 150, trekantX2 = width/2 - 150, trekantX3 = width/2 + 150;
+float trekantY1 = 450, trekantY2 = 300, trekantY3 = 450;
 
 void setup(){
     fullScreen();
