@@ -22,17 +22,23 @@ void draw(){
 }
 
 void mousePressed(){
-    
+    mainMenu.handleButtonClicks();
 }
 
 void selectMainMenu(){
-    
+    mainMenuSelected        = true;
+    trekantBeregnerSelected = false;
+    trekantTeoriSelected    = false;
 }
 
 void selectTrekantBeregner(){
-    
+    mainMenuSelected        = false;
+    trekantBeregnerSelected = true;
+    trekantTeoriSelected    = false;
 }
 
 void selectTrekantTeori(){
-
+    mainMenuSelected        = false;
+    trekantBeregnerSelected = false;
+    trekantTeoriSelected    = true;
 }
