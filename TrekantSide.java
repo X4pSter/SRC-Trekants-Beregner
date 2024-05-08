@@ -6,27 +6,24 @@ public class TrekantSide extends Side{
 
     private ButtonPicture backArrow;
 
-    private float x1, x2, x3;
-    private float y1, y2, y3;
+    private PImage trekant;
+
+    private float width,height;
     
-    public TrekantSide(PApplet p, ButtonPicture bp, float x1, float x2, float x3, float y1, float y2, float y3, PImage b, float w, float h){
-        super(p,b,w,h);
+    public TrekantSide(PApplet p, ButtonPicture bp, PImage bg, PImage t, float w, float h){
+        super(p,bg,w,h);
         this.p    = p;
         backArrow = bp;
-        this.x1   = x1;
-        this.x2   = x2;
-        this.x3   = x3;
-        this.y1   = y1;
-        this.y2   = y2;
-        this.y3   = y3;
+        trekant   = t;
+        width     = w;
+        height    = h;
     }
 
     public void displayTrekantSide(){
         super.displayBackground();
         backArrow.display();
-        p.fill(255);
-        p.println(x1 + ", " + x2 + ", " + x3 + ", " + y1 + ", " + y2 + ", " + y3);
-        p.triangle(x1,y1,x2,y2,x3,y3);
+        p.ellipse(width/2+196,328,10,10);
+        p.image(trekant,width/2 - trekant.width/2, 300);
     }
 
     public void handleButtonClicks(){

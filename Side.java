@@ -8,9 +8,9 @@ public class Side{
 
     private float   windowWidth,windowHeight;
 
-    public Side(PApplet p, PImage b, float w, float h){
+    public Side(PApplet p, PImage bg, float w, float h){
         this.p       = p;
-        background   = b;
+        background   = bg;
         windowWidth  = w;
         windowHeight = h;
     }

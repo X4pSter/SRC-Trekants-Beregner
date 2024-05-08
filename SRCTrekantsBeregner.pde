@@ -9,7 +9,6 @@ MainMenu mainMenu;
 TrekantSide beregnerSide;
 
 float buttonW = 100,buttonH = 90;
-float trekantY1 = 450, trekantY2 = 300, trekantY3 = 450;
 
 void setup(){
     fullScreen();
@@ -19,7 +18,7 @@ void setup(){
     returnArrow         = new ButtonPicture(this,50,50,50,50,loadImage("returnArrow.png"),"selectMainMenu");
 
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
-    beregnerSide = new TrekantSide(this,returnArrow,width/2 - 150,width/2 - 150,width/2 + 150,trekantY1,trekantY2,trekantY3,loadImage("solidBlue.png"),width,height);
+    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height);
 }
 
 void draw(){
