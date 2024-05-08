@@ -22,7 +22,6 @@ public class TrekantSide extends Side{
     public void displayTrekantSide(){
         super.displayBackground();
         backArrow.display();
-        p.ellipse(width/2+196,328,10,10);
         p.image(trekant,width/2 - trekant.width/2, 300);
     }
 
