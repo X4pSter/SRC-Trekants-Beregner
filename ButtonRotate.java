@@ -4,7 +4,7 @@ public class ButtonRotate{
 
     private PApplet p;
     
-    private float  x,y,w,h;
+    private float x,y,w,h;
     private float gapToTop,textSize;
     private float vinkel;
 
@@ -20,9 +20,13 @@ public class ButtonRotate{
         action   = a;
         textSize = ts;
         gapToTop = gt;
+        vinkel   = v;
     }
 
     public void display(){
+        p.pushMatrix();
+        p.translate(x,y);
+        p.rotate(p.radians(-vinkel));
         p.textSize(textSize);
         if(w < p.textWidth(titel) + 15){
             w = p.textWidth(titel) + 15;
@@ -42,11 +46,24 @@ public class ButtonRotate{
         p.text(titel,x - w/2 + 5,y + gapToTop);
         p.textAlign(p.LEFT,p.TOP);
         p.stroke(0);
+        p.popMatrix();
     }
 
     public void mouseClickDetection(){
-        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h && p.mouseY > y){
-            p.method(action);
+        p.pushMatrix();
+        p.translate(x,y);
+        p.rotate(p.radians(-vinkel));
+        // Apply inverse transformation to mouse coordinates
+        float mouseXInverse = p.mouseX - x;
+        float mouseYInverse = p.mouseY - y;
+        // Apply inverse rotation
+        float mouseXInverseRotated = mouseXInverse * p.cos(p.radians(-vinkel)) + mouseYInverse * p.sin(p.radians(-vinkel));
+        float mouseYInverseRotated = -mouseXInverse * p.sin(p.radians(-vinkel)) + mouseYInverse * p.cos(p.radians(-vinkel));
+        // Check for mouse click
+        if(mouseXInverseRotated < w/2 && mouseXInverseRotated > -w/2 && mouseYInverseRotated < h && mouseYInverseRotated > 0 && p.mousePressed){
+           p.method(action);
         }
+        p.popMatrix();
     }
+
 }
