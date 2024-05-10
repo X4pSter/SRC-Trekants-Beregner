@@ -24,6 +24,10 @@ public class ButtonRotate{
     }
 
     public void display(){
+        float mouseXInverse = p.mouseX - x;
+        float mouseYInverse = p.mouseY - y;
+        float mouseXRotated = mouseXInverse * p.cos(-vinkel) - mouseYInverse * p.sin(-vinkel) + x;
+        float mouseYRotated = mouseXInverse * p.sin(-vinkel) + mouseYInverse * p.cos(-vinkel) + y;
         p.pushMatrix();
         p.translate(x,y);
         p.rotate(p.radians(-vinkel));
@@ -31,13 +35,13 @@ public class ButtonRotate{
         if(w < p.textWidth(titel) + 15){
             w = p.textWidth(titel) + 15;
         }
-        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h && p.mouseY > y && !p.mousePressed){
+        if(mouseXRotated < x && mouseXRotated > x - w && mouseYRotated < y + h/2 && mouseYRotated > y - h && !p.mousePressed){
             p.fill(125);
         }   else{
             p.fill(255);
         }
-        p.rect(0,0,w,h);
-        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h && p.mouseY > y && !p.mousePressed){
+        p.rect(0,0 - h/2,w,h);
+        if(mouseXRotated < x && mouseXRotated > x - w && mouseYRotated < y + h/2 && mouseYRotated > y - h && !p.mousePressed){
             p.fill(255);
         }   else{
             p.fill(0);
@@ -49,21 +53,15 @@ public class ButtonRotate{
         p.popMatrix();
     }
 
-    public void mouseClickDetection(){
-        p.pushMatrix();
-        p.translate(x,y);
-        p.rotate(p.radians(-vinkel));
-        // Apply inverse transformation to mouse coordinates
+    public void mouseClickDetection() {
         float mouseXInverse = p.mouseX - x;
         float mouseYInverse = p.mouseY - y;
-        // Apply inverse rotation
-        float mouseXInverseRotated = mouseXInverse * p.cos(p.radians(-vinkel)) + mouseYInverse * p.sin(p.radians(-vinkel));
-        float mouseYInverseRotated = -mouseXInverse * p.sin(p.radians(-vinkel)) + mouseYInverse * p.cos(p.radians(-vinkel));
-        // Check for mouse click
-        if(mouseXInverseRotated < w/2 && mouseXInverseRotated > -w/2 && mouseYInverseRotated < h && mouseYInverseRotated > 0 && p.mousePressed){
-           p.method(action);
+        float mouseXRotated = mouseXInverse * p.cos(-vinkel) - mouseYInverse * p.sin(-vinkel) + x;
+        float mouseYRotated = mouseXInverse * p.sin(-vinkel) + mouseYInverse * p.cos(-vinkel) + y;
+        if(mouseXRotated < x && mouseXRotated > x - w && mouseYRotated < y + h/2 && mouseYRotated > y - h){
+            System.out.println("Button clicked! Action: " + action);
         }
-        p.popMatrix();
     }
+
 
 }

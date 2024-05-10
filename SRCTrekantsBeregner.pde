@@ -21,7 +21,7 @@ void setup(){
 
     sideA = new Button(this,766,534,390,10," ","nothing",10,10);
     sideB = new Button(this,1156,534,5,206," ","nothing",0.1,0.1);
-    sideC = new ButtonRotate(this,766,534,441,10," ","nothing",10,10,27.84);
+    sideC = new ButtonRotate(this,766,534,441,10," ","nothing",10,10,27.785);
 
     vinkelA = new ButtonEllipse(this,766,534,10,15," ","nothing",0.01,0.01);
     vinkelB = new ButtonEllipse(this,1156,328,10,15," ","nothing",0.01,0.01);
