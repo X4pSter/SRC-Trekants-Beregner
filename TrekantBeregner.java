@@ -28,24 +28,24 @@ public class TrekantBeregner extends TrekantSide{
             ButtonEllipse temp = buttons2.get(i);
             temp.display();
         }
-        /*
+        
         for(int i = 0; i < buttons1.size(); i++){
             Button temp = buttons1.get(i);
             temp.display();
         }
-        */
+        
         sideC.display();
         
     }
 
     public void handleButtonClicks(){
         super.handleButtonClicks();
-        /*
+        
         for(int i = 0; i < buttons1.size(); i++){
             Button temp = buttons1.get(i);
             temp.mouseClickDetection();
         }
-        */
+        
         for(int i = 0; i < buttons2.size(); i++){
             ButtonEllipse temp = buttons2.get(i);
             temp.mouseClickDetection();

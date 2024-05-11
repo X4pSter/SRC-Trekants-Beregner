@@ -12,9 +12,9 @@ public class ButtonRotate{
 
     public ButtonRotate(PApplet p, float x, float y, float w, float h, String t, String a, float ts, float gt, float v){
         this.p   = p;
+        this.w   = w;
         this.x   = x;
         this.y   = y;
-        this.w   = w;
         this.h   = h;
         titel    = t;
         action   = a;

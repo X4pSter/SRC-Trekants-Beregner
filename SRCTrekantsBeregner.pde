@@ -14,18 +14,19 @@ MainMenu mainMenu;
 TrekantBeregner beregnerSide;
 
 float buttonW = 100,buttonH = 90;
+float ellipseHeight = 15, ellipseWidth = 15;
 
 void setup(){
     fullScreen();
     frameRate(60);
 
-    sideA = new Button(this,766,534,390,10," ","nothing",10,10);
-    sideB = new Button(this,1156,534,5,206," ","nothing",0.1,0.1);
-    sideC = new ButtonRotate(this,766,534,441,10," ","nothing",10,10,27.785);
+    sideA = new Button(this,1156,534 - 206 + ellipseHeight/2,2.5,206 - ellipseHeight," ","nothing",0.001,0.001);
+    sideB = new Button(this,766 + 195,529,390 - ellipseWidth,10," ","nothing",10,10);
+    sideC = new ButtonRotate(this,766 + ellipseWidth/2,529,441 - ellipseWidth,10," ","nothing",10,10,27.785);
 
-    vinkelA = new ButtonEllipse(this,766,534,10,15," ","nothing",0.01,0.01);
-    vinkelB = new ButtonEllipse(this,1156,328,10,15," ","nothing",0.01,0.01);
-    vinkelC = new ButtonEllipse(this,1156,534,10,15," ","nothing",0.01,0.01);
+    vinkelA = new ButtonEllipse(this,766,534,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
+    vinkelB = new ButtonEllipse(this,1156,328,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
+    vinkelC = new ButtonEllipse(this,1156,534,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
     
     knapTrekantBeregner = new Button(this,width/2,300,buttonW,buttonH,"Trekants beregner","selectTrekantBeregner",60,20);
     knapTrekantTeori    = new Button(this,width/2,450,buttonW,buttonH,"Teori om trekanter","selectTrekantTeori",60,20);

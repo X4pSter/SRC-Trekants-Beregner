@@ -27,14 +27,14 @@ public class ButtonEllipse{
         if(w < p.textWidth(titel) + 15){
             w = p.textWidth(titel) + 15;
         }
-        if(p.mouseX < x - w/2 && p.mouseX > x + w - w/2 && p.mouseY < y + h && p.mouseY > y && !p.mousePressed){
+        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h/2 && p.mouseY > y - h/2 && !p.mousePressed){
             p.fill(125);
         }   else{
             p.fill(255);
         }
         p.ellipseMode(p.CORNER);
         p.ellipse(x - w/2,y - w/2,w,h);
-        if(p.mouseX < x - w/2 && p.mouseX > x + w - w/2 && p.mouseY < y + h && p.mouseY > y && !p.mousePressed){
+        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h/2 && p.mouseY > y - h/2 && !p.mousePressed){
             p.fill(255);
         }   else{
             p.fill(0);
@@ -46,7 +46,7 @@ public class ButtonEllipse{
     }
 
     public void mouseClickDetection(){
-        if(p.mouseX < x - w/2 && p.mouseX > x + w - w/2 && p.mouseY < y + h && p.mouseY > y){
+        if(p.mouseX < x + w/2 && p.mouseX > x - w/2 && p.mouseY < y + h/2 && p.mouseY > y - h/2){
             p.method(action);
         }
     }
