@@ -3,6 +3,7 @@ boolean mainMenuSelected = true,trekantBeregnerSelected = false,trekantTeoriSele
 Button knapTrekantBeregner,knapTrekantTeori;
 Button sideA,sideB;
 Button assignValue;
+Button beregnsider;
 
 ButtonEllipse vinkelA,vinkelB,vinkelC;
 
@@ -46,7 +47,7 @@ void setup(){
     returnArrow         = new ButtonPicture(this,50,50,50,50,loadImage("returnArrow.png"),"selectMainMenu");
 
     tekstFelt = new TekstFelt(this,850,600,50,50,43,10,numbers);
-    assignValue = new Button(this,850,730,50,50,"Assign value","assignValues",25,10);
+    assignValue = new Button(this,923,730,50,50,"Assign value","assignValues",25,10);
 
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
     beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue);
