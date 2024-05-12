@@ -21,6 +21,8 @@ TekstFelt tekstFelt;
 
 ArrayList<String> numbers = new ArrayList<String>();
 
+int valueSelected;
+
 void setup(){
     fullScreen();
     frameRate(60);
@@ -31,12 +33,12 @@ void setup(){
 
     numbers.add(".");
 
-    sideA = new Button(this,1156,534 - 206 + ellipseHeight/2,2.5,206 - ellipseHeight," ","nothing",0.001,0.001);
-    sideB = new Button(this,766 + 195,529,390 - ellipseWidth,10," ","nothing",10,10);
-    sideC = new ButtonRotate(this,766 + ellipseWidth/2,529,441 - ellipseWidth,10," ","nothing",10,10,27.785);
+    sideA = new Button(this,1156,534 - 206 + ellipseHeight/2,2.5,206 - ellipseHeight," ","selectSideA",0.001,0.001);
+    sideB = new Button(this,766 + 195,529,390 - ellipseWidth,10," ","selectSideB",10,10);
+    sideC = new ButtonRotate(this,766 + ellipseWidth/2,529,441 - ellipseWidth,10," ","selectSideC",10,10,27.785);
 
-    vinkelA = new ButtonEllipse(this,766,534,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
-    vinkelB = new ButtonEllipse(this,1156,328,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
+    vinkelA = new ButtonEllipse(this,766,534,ellipseWidth,ellipseHeight," ","selectVinkelA",0.01,0.01);
+    vinkelB = new ButtonEllipse(this,1156,328,ellipseWidth,ellipseHeight," ","selectVinkelB",0.01,0.01);
     vinkelC = new ButtonEllipse(this,1156,534,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
     
     knapTrekantBeregner = new Button(this,width/2,300,buttonW,buttonH,"Trekants beregner","selectTrekantBeregner",60,20);
@@ -92,4 +94,50 @@ void selectTrekantTeori(){
 
 void nothing(){
     println("nothing");
+}
+
+void assignValues(){
+    String temp = "";
+    if(!temp.equals(tekstFelt.tekst)){
+        if(valueSelected == 1){
+            beregnerSide.sideAL = float(tekstFelt.tekst);
+        }
+        if(valueSelected == 2){
+            beregnerSide.sideBL = float(tekstFelt.tekst);
+        }
+        if(valueSelected == 3){
+            beregnerSide.sideCL = float(tekstFelt.tekst);
+        }
+        if(valueSelected == 4){
+            beregnerSide.vinkelAS = float(tekstFelt.tekst);
+        }
+        if(valueSelected == 5){
+            beregnerSide.vinkelBS = float(tekstFelt.tekst);
+        }
+    }
+}
+
+void selectSideA(){
+    valueSelected = 1;
+    println("do " + valueSelected);
+}
+
+void selectSideB(){
+    valueSelected = 2;
+    println("do " + valueSelected);
+}
+
+void selectSideC(){
+    valueSelected = 3;
+    println("do " + valueSelected);
+}
+
+void selectVinkelA(){
+    valueSelected = 4;
+    println("do " + valueSelected);
+}
+
+void selectVinkelB(){
+    valueSelected = 5;
+    println("do " + valueSelected);
 }

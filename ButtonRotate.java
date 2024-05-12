@@ -59,7 +59,7 @@ public class ButtonRotate{
         float mouseXRotated = mouseXInverse * p.cos(-vinkel) - mouseYInverse * p.sin(-vinkel) + x;
         float mouseYRotated = mouseXInverse * p.sin(-vinkel) + mouseYInverse * p.cos(-vinkel) + y;
         if(mouseXRotated < x && mouseXRotated > x - w && mouseYRotated < y + h/2 && mouseYRotated > y - h){
-            System.out.println("Button clicked! Action: " + action);
+            p.method(action);
         }
     }
 

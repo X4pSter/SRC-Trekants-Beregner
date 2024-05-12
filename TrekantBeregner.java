@@ -15,8 +15,8 @@ public class TrekantBeregner extends TrekantSide{
 
     private Button assignValue;
 
-    private float sideAL,sideBL,sideCL;
-    private float vinkelAS,vinkelBS;
+    public float sideAL,sideBL,sideCL;
+    public float vinkelAS,vinkelBS;
 
     private int valueSelected;
 
@@ -30,6 +30,7 @@ public class TrekantBeregner extends TrekantSide{
         buttons2.add(be2);
         buttons2.add(be3);
         tekstFelt = tf;
+        assignValue = aV;
     }
 
     public void display(){
@@ -45,6 +46,7 @@ public class TrekantBeregner extends TrekantSide{
         }
         p.textSize(25);
         p.textAlign(p.LEFT,p.BOTTOM);
+        p.fill(0);
         p.text("Side a længde: " + sideAL,50,200);
         p.text("Side b længde: " + sideBL,50,230);
         p.text("Side c længde: " + sideCL,50,260);
@@ -52,6 +54,7 @@ public class TrekantBeregner extends TrekantSide{
         p.text("Vinkel B størrelse: " + vinkelBS + "°",50,320);
         sideC.display();
         tekstFelt.display();
+        assignValue.display();
     }
 
     public void handleButtonClicks(){
@@ -67,50 +70,10 @@ public class TrekantBeregner extends TrekantSide{
             temp.mouseClickDetection();
         }
         sideC.mouseClickDetection();
+        assignValue.mouseClickDetection();
     }
 
     public void handleKeyClicks(){
         tekstFelt.handleCharacters();
-    }
-
-    private void assignValues(){
-        String temp = "";
-        if(!temp.equals(tekstFelt.tekst)){
-            if(valueSelected == 1){
-                sideAL = p.float(tekstFelt.tekst);
-            }
-            if(valueSelected == 2){
-                sideBL = p.float(tekstFelt.tekst);
-            }
-            if(valueSelected == 3){
-                sideCL = p.float(tekstFelt.tekst);
-            }
-            if(valueSelected == 4){
-                vinkelAS = p.float(tekstFelt.tekst);
-            }
-            if(valueSelected == 5){
-                vinkelBS = p.float(tekstFelt.tekst);
-            }
-        }
-    }
-
-    private void SelectSideA(){
-        valueSelected = 1;
-    }
-
-    private void SelectSideB(){
-        valueSelected = 2;
-    }
-
-    private void SelectSideC(){
-        valueSelected = 3;
-    }
-
-    private void SelectVinkelA(){
-        valueSelected = 4;
-    }
-
-    private void SelectVinkelB(){
-        valueSelected = 5;
     }
 }
