@@ -8,10 +8,19 @@ public class TrekantBeregner extends TrekantSide{
 
     private ButtonRotate sideC;
 
-    private ArrayList<Button>        buttons1 = new ArrayList<Button>();;
-    private ArrayList<ButtonEllipse> buttons2 = new ArrayList<ButtonEllipse>();;
+    private ArrayList<Button>        buttons1 = new ArrayList<Button>();
+    private ArrayList<ButtonEllipse> buttons2 = new ArrayList<ButtonEllipse>();
 
-    TrekantBeregner(PApplet p, ButtonPicture bp, PImage bg, PImage t, float w, float h , Button b1, Button b2, ButtonRotate br, ButtonEllipse be1, ButtonEllipse be2, ButtonEllipse be3){
+    private TekstFelt tekstFelt;
+
+    private Button assignValue;
+
+    private float sideAL,sideBL,sideCL;
+    private float vinkelAS,vinkelBS;
+
+    private int valueSelected;
+
+    TrekantBeregner(PApplet p, ButtonPicture bp, PImage bg, PImage t, float w, float h , Button b1, Button b2, ButtonRotate br, ButtonEllipse be1, ButtonEllipse be2, ButtonEllipse be3, TekstFelt tf, Button aV){
         super(p,bp,bg,t,w,h);
         this.p  = p;
         buttons1.add(b1);
@@ -20,6 +29,7 @@ public class TrekantBeregner extends TrekantSide{
         buttons2.add(be1);
         buttons2.add(be2);
         buttons2.add(be3);
+        tekstFelt = tf;
     }
 
     public void display(){
@@ -33,9 +43,15 @@ public class TrekantBeregner extends TrekantSide{
             Button temp = buttons1.get(i);
             temp.display();
         }
-        
+        p.textSize(25);
+        p.textAlign(p.LEFT,p.BOTTOM);
+        p.text("Side a længde: " + sideAL,50,200);
+        p.text("Side b længde: " + sideBL,50,230);
+        p.text("Side c længde: " + sideCL,50,260);
+        p.text("Vinkel A størrelse: " + vinkelAS + "°",50,290);
+        p.text("Vinkel B størrelse: " + vinkelBS + "°",50,320);
         sideC.display();
-        
+        tekstFelt.display();
     }
 
     public void handleButtonClicks(){
@@ -51,5 +67,50 @@ public class TrekantBeregner extends TrekantSide{
             temp.mouseClickDetection();
         }
         sideC.mouseClickDetection();
+    }
+
+    public void handleKeyClicks(){
+        tekstFelt.handleCharacters();
+    }
+
+    private void assignValues(){
+        String temp = "";
+        if(!temp.equals(tekstFelt.tekst)){
+            if(valueSelected == 1){
+                sideAL = p.float(tekstFelt.tekst);
+            }
+            if(valueSelected == 2){
+                sideBL = p.float(tekstFelt.tekst);
+            }
+            if(valueSelected == 3){
+                sideCL = p.float(tekstFelt.tekst);
+            }
+            if(valueSelected == 4){
+                vinkelAS = p.float(tekstFelt.tekst);
+            }
+            if(valueSelected == 5){
+                vinkelBS = p.float(tekstFelt.tekst);
+            }
+        }
+    }
+
+    private void SelectSideA(){
+        valueSelected = 1;
+    }
+
+    private void SelectSideB(){
+        valueSelected = 2;
+    }
+
+    private void SelectSideC(){
+        valueSelected = 3;
+    }
+
+    private void SelectVinkelA(){
+        valueSelected = 4;
+    }
+
+    private void SelectVinkelB(){
+        valueSelected = 5;
     }
 }

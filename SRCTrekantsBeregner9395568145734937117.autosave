@@ -1,8 +1,9 @@
+import java.util.ArrayList;
+
 boolean mainMenuSelected = true,trekantBeregnerSelected = false,trekantTeoriSelected = false;
 
 Button knapTrekantBeregner,knapTrekantTeori;
 Button sideA,sideB;
-Button assignValue;
 
 ButtonEllipse vinkelA,vinkelB,vinkelC;
 
@@ -17,19 +18,13 @@ TrekantBeregner beregnerSide;
 float buttonW = 100,buttonH = 90;
 float ellipseHeight = 15, ellipseWidth = 15;
 
-TekstFelt tekstFelt;
+TekstFelt test;
 
-ArrayList<String> numbers = new ArrayList<String>();
+ArrayList<char> test2 = new ArrayList<char>;
 
 void setup(){
     fullScreen();
     frameRate(60);
-
-    for(int i = 0; i <= 9; i++){
-        numbers.add(str(i));
-    }
-
-    numbers.add(".");
 
     sideA = new Button(this,1156,534 - 206 + ellipseHeight/2,2.5,206 - ellipseHeight," ","nothing",0.001,0.001);
     sideB = new Button(this,766 + 195,529,390 - ellipseWidth,10," ","nothing",10,10);
@@ -43,11 +38,10 @@ void setup(){
     knapTrekantTeori    = new Button(this,width/2,450,buttonW,buttonH,"Teori om trekanter","selectTrekantTeori",60,20);
     returnArrow         = new ButtonPicture(this,50,50,50,50,loadImage("returnArrow.png"),"selectMainMenu");
 
-    tekstFelt = new TekstFelt(this,850,600,50,50,43,10,numbers);
-    assignValue = new Button(this,850,730,50,50,"Assign value","assignValues",25,10);
-
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
-    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue);
+    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC);
+
+    test = new TekstFelt(this,100,100,50,50,test2);
 }
 
 void draw(){
@@ -57,6 +51,7 @@ void draw(){
     if(trekantBeregnerSelected){
         beregnerSide.display();
     }
+    test.display();
 }
 
 void mousePressed(){
@@ -69,7 +64,7 @@ void mousePressed(){
 }
 
 void keyPressed(){
-    beregnerSide.handleKeyClicks();
+    test.handleCharacters();
 }
 
 void selectMainMenu(){
