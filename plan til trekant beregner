@@ -1,3 +1,0 @@
-For at vise de forskellige værdier, vil jeg lave tekst ssamlet et sted som viser vinkeler og længder af trekanten. 
-Jeg vil så have en knap som kører en funktion som først tjekker om der er tre givne værdier, og hvis der er det, beregner de resterende værdier. 
-Disse værdier kan gives ved hjælp af et tekstfelt som når man trykker på en af siderne, vil den se hvad man taster, og når man så trykker på en knap ved siden af bliver værdierne sat til den side.
