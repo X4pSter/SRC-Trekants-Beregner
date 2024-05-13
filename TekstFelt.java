@@ -60,8 +60,8 @@ public class TekstFelt{
         p.rect(x,y,w,h);
         float W = p.textWidth(tekst);
         p.fill(0);
-        p.text(tekst,x + 5,y + gapToTop);
         p.textAlign(p.LEFT,p.TOP);
+        p.text(tekst,x + 5,y + gapToTop);
         p.stroke(0);
     }
 }

@@ -24,6 +24,8 @@ ArrayList<String> numbers = new ArrayList<String>();
 
 int valueSelected;
 
+String[] valgtSide = new String[5];
+
 void setup(){
     fullScreen();
     frameRate(60);
@@ -51,6 +53,12 @@ void setup(){
 
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
     beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue);
+
+    valgtSide[0] = "Side a valgt";
+    valgtSide[1] = "Side b valgt";
+    valgtSide[2] = "Side c valgt";
+    valgtSide[3] = "Vinkel A valgt";
+    valgtSide[4] = "Vinkel B valgt";
 }
 
 void draw(){
@@ -60,6 +68,7 @@ void draw(){
     if(trekantBeregnerSelected){
         beregnerSide.display();
     }
+    sideSelected(valueSelected);
 }
 
 void mousePressed(){
@@ -120,25 +129,29 @@ void assignValues(){
 
 void selectSideA(){
     valueSelected = 1;
-    println("do " + valueSelected);
 }
 
 void selectSideB(){
     valueSelected = 2;
-    println("do " + valueSelected);
 }
 
 void selectSideC(){
     valueSelected = 3;
-    println("do " + valueSelected);
 }
 
 void selectVinkelA(){
     valueSelected = 4;
-    println("do " + valueSelected);
 }
 
 void selectVinkelB(){
     valueSelected = 5;
-    println("do " + valueSelected);
+}
+
+void sideSelected(int vS){
+    if(vS > 0){
+        String temp = valgtSide[vS - 1];
+        if(trekantBeregnerSelected){
+            text(temp,850,680);
+        } 
+    }
 }
