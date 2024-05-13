@@ -13,7 +13,7 @@ public class TrekantBeregner extends TrekantSide{
     public float vinkelAS,vinkelBS;
     public float vinkelCS = 90;
 
-    private int valueSelected;
+    private int sideSelected;
 
     private String[] valgtSide = new String[5];
 
@@ -62,51 +62,57 @@ public class TrekantBeregner extends TrekantSide{
         vinkelBS = p.degrees(p.atan(sideBL/sideAL));
 
     }
-    //tjek calculate til sider for fejl
+
     public void calculateSideA(){
-        if(sideBL > 0 && sideCL > 0 && vinkelAS <= 0 && vinkelBS <= 0){
+        if(sideBL > 0 && sideCL > 0){
             sideAL = p.sqrt((sideCL*sideCL) - (sideBL*sideBL));
-        } else if(sideBL <= 0 && sideCL > 0 && vinkelAS > 0 && vinkelBS <= 0){
+        } else if(sideCL > 0 && vinkelAS > 0){
             sideAL = p.sin(p.radians(vinkelAS))*sideCL;
-        } else if(sideBL <= 0 && sideCL > 0 && vinkelAS <= 0 && vinkelBS > 0){
+        } else if(sideCL > 0 && vinkelBS > 0){
             sideAL = p.cos(p.radians(vinkelBS))*sideCL;
-        } else if(sideBL > 0 && sideCL <= 0 && vinkelAS > 0 && vinkelBS <= 0){
+        } else if(sideBL > 0 && vinkelAS > 0){
             sideAL = p.tan(p.radians(vinkelAS))*sideBL;
-        } else if(sideBL > 0 && sideCL <= 0 && vinkelAS <= 0 && vinkelBS > 0){
+        } else if(sideBL > 0 && vinkelBS > 0){
             sideAL = sideBL/p.tan(p.radians(vinkelBS));
         }
     }
 
     public void calculateSideB(){
-        if(sideAL > 0 && sideCL > 0 && vinkelAS <= 0 && vinkelBS <= 0){
+        if(sideAL > 0 && sideCL > 0){
             sideBL = p.sqrt((sideCL*sideCL) - (sideAL*sideAL));
-        } else if(sideAL <= 0 && sideCL > 0 && vinkelAS > 0 && vinkelBS <= 0){
-            sideBL = p.sin(p.radians(vinkelAS))*sideCL;
-        } else if(sideAL > 0 && sideCL > 0 && vinkelAS <= 0 && vinkelBS <= 0)
+        } else if(sideCL > 0 && vinkelAS > 0){
+            sideBL = p.sin(p.radians(vinkelBS))*sideCL;
+        } else if(sideAL > 0 && sideCL > 0){
+            sideBL = p.cos(p.radians(vinkelAS))*sideCL;
+        } else if(sideAL > 0 && vinkelBS > 0){
+            sideBL = p.tan(p.radians(vinkelBS))*sideCL;
+        } else if(sideAL > 0 && vinkelAS > 0){
+            sideBL = sideAL/p.tan(p.radians(vinkelAS));
+        }
     }
 
     public void calculateSideC(){
-        if(sideAL > 0 && side BL > 0 && vinkelAS <= 0 && vinkelBS <= 0){
+        if(sideAL > 0 && sideBL > 0){
             sideCL = p.sqrt((sideAL*sideAL) + (sideBL*sideBL));
-        } else if(sideAL > 0 && side BL <= 0 && vinkelAS > 0 && vinkelBS <= 0){
+        } else if(sideAL > 0 && vinkelAS > 0){
             sideCL = sideAL/p.sin(p.radians(vinkelAS));
-        } else if(sideAL <= 0 && side BL > 0 && vinkelAS <= 0 && vinkelBS > 0){
+        } else if(sideBL > 0 && vinkelBS > 0){
             sideCL = sideBL/p.sin(p.radians(vinkelBS));
-        } else if(sideAL > 0 && side BL <= 0 && vinkelAS <= 0 && vinkelBS > 0){
+        } else if(sideAL > 0 && vinkelBS > 0){
             sideCL = sideAL/p.cos(p.radians(vinkelBS));
-        } else if(sideAL <= 0 && side BL > 0 && vinkelAS > 0 && vinkelBS <= 0){
-            siceCL = sideBL/p.cos(p.radians(vinkelAS));
+        } else if(sideBL > 0 && vinkelAS > 0){
+            sideCL = sideBL/p.cos(p.radians(vinkelAS));
         }
     }
 
     public void calculateVinkelA(){
         if(vinkelBS > 0){
             vinkelAS = 180 - (vinkelBS + 90);
-        } else if(sideAL > 0 && sideBL <= 0 && sideCL > 0 %% vinkelBS <= 0){
+        } else if(sideAL > 0 && sideCL > 0){
             vinkelAS = p.degrees(p.asin(sideAL/sideCL));
-        } else if(sideAL <= 0 && sideBL > 0 && sideCL > 0 %% vinkelBS <= 0){
+        } else if(sideBL > 0 && sideCL > 0){
             vinkelAS = p.degrees(p.acos(sideBL/sideCL));
-        } else if(sideAL > 0 && sideBL > 0 && sideCL > 0 %% vinkelBS <= 0){
+        } else if(sideAL > 0 && sideBL > 0){
             vinkelAS = p.degrees(p.atan(sideAL/sideBL));
         }
     }
@@ -114,19 +120,20 @@ public class TrekantBeregner extends TrekantSide{
     public void calculateVinkelB(){
         if(vinkelAS > 0){
             vinkelBS = 180 - (vinkelAS - 90);
-        } else if(sideAL <= 0 && sideBL > 0 && sideCL > 0 %% vinkelAS <= 0){
+        } else if(sideBL > 0 && sideCL > 0){
             vinkelBS = p.degrees(p.asin(sideBL/sideCL));
-        } else if(sideAL > 0 && sideBL <= 0 && sideCL > 0 %% vinkelBS <= 0){
+        } else if(sideAL > 0 && sideCL > 0){
             vinkelBS = p.degrees(p.acos(sideAL/sideCL));
-        } else if(sideAL > 0 && sideBL > 0 && sideCL <= 0 %% vinkelBS <= 0){
-            vinkelBS = p.degrees(p.atan(siadeBL/sideAL));
+        } else if(sideAL > 0 && sideBL > 0){
+            vinkelBS = p.degrees(p.atan(sideBL/sideAL));
         }
     }
 
-    void sideSelected(int vS, boolean tBS){
+    void sideSelected(int vS, int mS){
         if(vS > 0){
             String temp = valgtSide[vS - 1];
-            if(tBS){
+            if(mS == 2){
+                p.fill(0);
                 p.text(temp,850,680);
             } 
         }

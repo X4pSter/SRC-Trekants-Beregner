@@ -1,5 +1,3 @@
-boolean mainMenuSelected = true,trekantBeregnerSelected = false,trekantTeoriSelected = false;
-
 Button knapTrekantBeregner,knapTrekantTeori;
 Button sideA,sideB;
 Button assignValue;
@@ -15,6 +13,8 @@ MainMenu mainMenu;
 
 TrekantBeregner beregnerSide;
 
+TrekantTeori teoriSide;
+
 float buttonW = 100,buttonH = 90;
 float ellipseHeight = 15, ellipseWidth = 15;
 
@@ -22,11 +22,13 @@ TekstFelt tekstFelt;
 
 ArrayList<String> numbers = new ArrayList<String>();
 
-int valueSelected;
+int sideSelected, menuSelected;
 
 void setup(){
     fullScreen();
     frameRate(60);
+
+    menuSelected = 1;
 
     for(int i = 0; i <= 9; i++){
         numbers.add(str(i));
@@ -52,24 +54,31 @@ void setup(){
 
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
     beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue,beregnSider);
+    teoriSide    = new TrekantTeori(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,loadImage("Side_a.png"),loadImage("Side_b.png"),loadImage("Side_c.png"),loadImage("Vinkel_A.png"),loadImage("Vinkel_B.png"));
 }
 
 void draw(){
-    if(mainMenuSelected){
+    if(menuSelected == 1){
         mainMenu.mainMenuDisplay();
     }
-    if(trekantBeregnerSelected){
+    if(menuSelected == 2){
         beregnerSide.display();
     }
-    sideSelected(valueSelected);
+    if(menuSelected == 3){
+        teoriSide.display(sideSelected);
+    }
+    sideSelected(sideSelected);
 }
 
 void mousePressed(){
-    if(mainMenuSelected){
+    if(menuSelected == 1){
         mainMenu.handleButtonClicks();
     }
-    if(trekantBeregnerSelected){
+    if(menuSelected == 2){
         beregnerSide.handleButtonClicks();
+    }
+    if(menuSelected == 3){
+        teoriSide.handleButtonClicks();
     }
 }
 
@@ -78,88 +87,80 @@ void keyPressed(){
 }
 
 void selectMainMenu(){
-    mainMenuSelected        = true;
-    trekantBeregnerSelected = false;
-    trekantTeoriSelected    = false;
+    menuSelected = 1;
 }
 
 void selectTrekantBeregner(){
-    mainMenuSelected        = false;
-    trekantBeregnerSelected = true;
-    trekantTeoriSelected    = false;
+    menuSelected = 2;
 }
 
 void selectTrekantTeori(){
-    mainMenuSelected        = false;
-    trekantBeregnerSelected = false;
-    trekantTeoriSelected    = true;
+    menuSelected = 3;
 }
 
 void nothing(){
-    println("nothing");
+    
 }
 
 void assignValues(){
     String temp = "";
     if(!temp.equals(tekstFelt.tekst)){
-        if(valueSelected == 1){
+        if(sideSelected == 1){
             beregnerSide.sideAL = float(tekstFelt.tekst);
         }
-        if(valueSelected == 2){
+        if(sideSelected == 2){
             beregnerSide.sideBL = float(tekstFelt.tekst);
         }
-        if(valueSelected == 3){
+        if(sideSelected == 3){
             beregnerSide.sideCL = float(tekstFelt.tekst);
         }
-        if(valueSelected == 4){
+        if(sideSelected == 4){
             beregnerSide.vinkelAS = float(tekstFelt.tekst);
         }
-        if(valueSelected == 5){
+        if(sideSelected == 5){
             beregnerSide.vinkelBS = float(tekstFelt.tekst);
         }
     }
 }
 
 void selectSideA(){
-    valueSelected = 1;
+    sideSelected = 1;
 }
 
 void selectSideB(){
-    valueSelected = 2;
+    sideSelected = 2;
 }
 
 void selectSideC(){
-    valueSelected = 3;
+    sideSelected = 3;
 }
 
 void selectVinkelA(){
-    valueSelected = 4;
+    sideSelected = 4;
 }
 
 void selectVinkelB(){
-    valueSelected = 5;
+    sideSelected = 5;
 }
 
 void sideSelected(int vS){
-    beregnerSide.sideSelected(vS,trekantBeregnerSelected);
+    beregnerSide.sideSelected(vS,menuSelected);
 }
 
-void calculateSideA(){
-    
-}
-
-void calculateSideB(){
-    
-}
-
-void calculateSideC(){
-    
-}
-
-void calculateVinkelA(){
-    
-}
-
-void calculateVinkelB(){
-    
+void calculate(){
+    if(sideSelected == 1){
+        beregnerSide.calculateSideA();
+    }
+    if(sideSelected == 2){
+        beregnerSide.calculateSideB();
+    }
+    if(sideSelected == 3){
+        beregnerSide.calculateSideC();
+    }
+    if(sideSelected == 4){
+        beregnerSide.calculateVinkelA();
+    }
+    if(sideSelected == 5){
+        beregnerSide.calculateVinkelB();
+    }
 }
