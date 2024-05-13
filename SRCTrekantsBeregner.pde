@@ -3,7 +3,7 @@ boolean mainMenuSelected = true,trekantBeregnerSelected = false,trekantTeoriSele
 Button knapTrekantBeregner,knapTrekantTeori;
 Button sideA,sideB;
 Button assignValue;
-Button beregnsider;
+Button beregnSider;
 
 ButtonEllipse vinkelA,vinkelB,vinkelC;
 
@@ -23,8 +23,6 @@ TekstFelt tekstFelt;
 ArrayList<String> numbers = new ArrayList<String>();
 
 int valueSelected;
-
-String[] valgtSide = new String[5];
 
 void setup(){
     fullScreen();
@@ -50,15 +48,10 @@ void setup(){
 
     tekstFelt = new TekstFelt(this,850,600,50,50,43,10,numbers);
     assignValue = new Button(this,923,730,50,50,"Assign value","assignValues",25,10);
+    beregnSider = new Button(this,896,800,50,50,"Beregn","calculate",25,10);
 
     mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
-    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue);
-
-    valgtSide[0] = "Side a valgt";
-    valgtSide[1] = "Side b valgt";
-    valgtSide[2] = "Side c valgt";
-    valgtSide[3] = "Vinkel A valgt";
-    valgtSide[4] = "Vinkel B valgt";
+    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue,beregnSider);
 }
 
 void draw(){
@@ -148,10 +141,25 @@ void selectVinkelB(){
 }
 
 void sideSelected(int vS){
-    if(vS > 0){
-        String temp = valgtSide[vS - 1];
-        if(trekantBeregnerSelected){
-            text(temp,850,680);
-        } 
-    }
+    beregnerSide.sideSelected(vS,trekantBeregnerSelected);
+}
+
+void calculateSideA(){
+    
+}
+
+void calculateSideB(){
+    
+}
+
+void calculateSideC(){
+    
+}
+
+void calculateVinkelA(){
+    
+}
+
+void calculateVinkelB(){
+    
 }
