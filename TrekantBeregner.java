@@ -100,11 +100,27 @@ public class TrekantBeregner extends TrekantSide{
     }
 
     public void calculateVinkelA(){
-    
+        if(vinkelBS > 0){
+            vinkelAS = 180 - (vinkelBS + 90);
+        } else if(sideAL > 0 && sideBL <= 0 && sideCL > 0 %% vinkelBS <= 0){
+            vinkelAS = p.degrees(p.asin(sideAL/sideCL));
+        } else if(sideAL <= 0 && sideBL > 0 && sideCL > 0 %% vinkelBS <= 0){
+            vinkelAS = p.degrees(p.acos(sideBL/sideCL));
+        } else if(sideAL > 0 && sideBL > 0 && sideCL > 0 %% vinkelBS <= 0){
+            vinkelAS = p.degrees(p.atan(sideAL/sideBL));
+        }
     }
 
     public void calculateVinkelB(){
-    
+        if(vinkelAS > 0){
+            vinkelBS = 180 - (vinkelAS - 90);
+        } else if(sideAL <= 0 && sideBL > 0 && sideCL > 0 %% vinkelAS <= 0){
+            vinkelBS = p.degrees(p.asin(sideBL/sideCL));
+        } else if(sideAL > 0 && sideBL <= 0 && sideCL > 0 %% vinkelBS <= 0){
+            vinkelBS = p.degrees(p.acos(sideAL/sideCL));
+        } else if(sideAL > 0 && sideBL > 0 && sideCL <= 0 %% vinkelBS <= 0){
+            vinkelBS = p.degrees(p.atan(siadeBL/sideAL));
+        }
     }
 
     void sideSelected(int vS, boolean tBS){
