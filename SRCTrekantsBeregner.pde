@@ -44,17 +44,17 @@ void setup(){
     vinkelB = new ButtonEllipse(this,1156,328,ellipseWidth,ellipseHeight," ","selectVinkelB",0.01,0.01);
     vinkelC = new ButtonEllipse(this,1156,534,ellipseWidth,ellipseHeight," ","nothing",0.01,0.01);
     
-    knapTrekantBeregner = new Button(this,width/2,300,buttonW,buttonH,"Trekants beregner","selectTrekantBeregner",60,20);
-    knapTrekantTeori    = new Button(this,width/2,450,buttonW,buttonH,"Teori om trekanter","selectTrekantTeori",60,20);
+    knapTrekantBeregner = new Button(this,width/2,400,buttonW,buttonH,"Trekants beregner","selectTrekantBeregner",60,20);
+    knapTrekantTeori    = new Button(this,width/2,550,buttonW,buttonH,"Teori om trekanter","selectTrekantTeori",60,20);
     returnArrow         = new ButtonPicture(this,50,50,50,50,loadImage("returnArrow.png"),"selectMainMenu");
 
     tekstFelt = new TekstFelt(this,850,600,50,50,43,10,numbers);
     assignValue = new Button(this,923,700,50,50,"Assign value","assignValues",25,10);
     beregnSider = new Button(this,896,770,50,50,"Beregn","calculate",25,10);
 
-    mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("solidBlue.png"),width,height);
-    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue,beregnSider);
-    teoriSide    = new TrekantTeori(this,returnArrow,loadImage("solidBlue.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,loadImage("Side_a.png"),loadImage("Side_b.png"),loadImage("Side_c.png"),loadImage("Vinkel_A.png"),loadImage("Vinkel_B.png"));
+    mainMenu     = new MainMenu(this,knapTrekantBeregner,knapTrekantTeori,loadImage("background2.png"),width,height);
+    beregnerSide = new TrekantBeregner(this,returnArrow,loadImage("background2.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,tekstFelt,assignValue,beregnSider);
+    teoriSide    = new TrekantTeori(this,returnArrow,loadImage("background2.png"),loadImage("retVinkletTrekant.png"),width,height,sideA,sideB,sideC,vinkelA,vinkelB,vinkelC,loadImage("Side_a.png"),loadImage("Side_b.png"),loadImage("Side_c.png"),loadImage("Vinkel_A.png"),loadImage("Vinkel_B.png"));
 }
 
 void draw(){
@@ -68,6 +68,11 @@ void draw(){
         teoriSide.display(sideSelected);
     }
     sideSelected(sideSelected);
+    textSize(70);
+    String titel = "Alt om retvinklede trekanter";
+    float size = textWidth(titel);
+    fill(0);
+    text(titel,width/2 - size/2,200);
 }
 
 void mousePressed(){
