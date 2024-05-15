@@ -60,6 +60,10 @@ void setup(){
 void draw(){
     if(menuSelected == 1){
         mainMenu.mainMenuDisplay();
+        String titel = "Alt om retvinklede trekanter";
+        float size = textWidth(titel);
+        fill(0);
+        text(titel,width/2 - size/2,200);
     }
     if(menuSelected == 2){
         beregnerSide.display();
@@ -69,10 +73,6 @@ void draw(){
     }
     sideSelected(sideSelected);
     textSize(70);
-    String titel = "Alt om retvinklede trekanter";
-    float size = textWidth(titel);
-    fill(0);
-    text(titel,width/2 - size/2,200);
 }
 
 void mousePressed(){
@@ -111,19 +111,24 @@ void assignValues(){
     String temp = "";
     if(!temp.equals(tekstFelt.tekst)){
         if(sideSelected == 1){
-            beregnerSide.sideAL = float(tekstFelt.tekst);
+            beregnerSide.setSideAL(float(tekstFelt.getTekst()));
+            tekstFelt.setTekst("0");
         }
         if(sideSelected == 2){
-            beregnerSide.sideBL = float(tekstFelt.tekst);
+            beregnerSide.setSideBL(float(tekstFelt.getTekst()));
+            tekstFelt.setTekst("0");
         }
         if(sideSelected == 3){
-            beregnerSide.sideCL = float(tekstFelt.tekst);
+            beregnerSide.setSideCL(float(tekstFelt.getTekst()));
+            tekstFelt.setTekst("0");
         }
         if(sideSelected == 4){
-            beregnerSide.vinkelAS = float(tekstFelt.tekst);
+            beregnerSide.setVinkelAS(float(tekstFelt.getTekst()));
+            tekstFelt.setTekst("0");
         }
         if(sideSelected == 5){
-            beregnerSide.vinkelBS = float(tekstFelt.tekst);
+            beregnerSide.setVinkelBS(float(tekstFelt.getTekst()));
+            tekstFelt.setTekst("0");
         }
     }
 }

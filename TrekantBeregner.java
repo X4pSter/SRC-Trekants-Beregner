@@ -9,9 +9,9 @@ public class TrekantBeregner extends TrekantSide{
     private Button assignValue;
     private Button beregnSider;
 
-    public float sideAL,sideBL,sideCL;
-    public float vinkelAS,vinkelBS;
-    public float vinkelCS = 90;
+    private float sideAL,sideBL,sideCL;
+    private float vinkelAS,vinkelBS;
+    private float vinkelCS = 90;
 
     private int sideSelected;
 
@@ -82,7 +82,7 @@ public class TrekantBeregner extends TrekantSide{
         } else if(sideBL > 0 && vinkelBS > 0){
             sideAL = sideBL/p.tan(p.radians(vinkelBS));
         }
-        if(Float.isNaN(sideAL)){
+        if(Float.isNaN(sideAL) || sideAL < 0){
             nan = true;
             sideAL = 0;
         } else{
@@ -102,7 +102,7 @@ public class TrekantBeregner extends TrekantSide{
         } else if(sideAL > 0 && vinkelAS > 0){
             sideBL = sideAL/p.tan(p.radians(vinkelAS));
         }
-        if(Float.isNaN(sideBL)){
+        if(Float.isNaN(sideBL) || sideBL < 0){
             nan = true;
             sideBL = 0;
         } else{
@@ -122,7 +122,7 @@ public class TrekantBeregner extends TrekantSide{
         } else if(sideBL > 0 && vinkelAS > 0){
             sideCL = sideBL/p.cos(p.radians(vinkelAS));
         }
-        if(Float.isNaN(sideCL)){
+        if(Float.isNaN(sideCL) || sideCL < 0){
             nan = true;
             sideCL = 0;
         } else{
@@ -140,7 +140,7 @@ public class TrekantBeregner extends TrekantSide{
         } else if(sideAL > 0 && sideBL > 0){
             vinkelAS = p.degrees(p.atan(sideAL/sideBL));
         }
-        if(Float.isNaN(vinkelAS)){
+        if(Float.isNaN(vinkelAS) || vinkelAS < 0){
             nan = true;
             vinkelAS = 0;
         } else{
@@ -158,7 +158,7 @@ public class TrekantBeregner extends TrekantSide{
         } else if(sideAL > 0 && sideBL > 0){
             vinkelBS = p.degrees(p.atan(sideBL/sideAL));
         }
-        if(Float.isNaN(vinkelBS)){
+        if(Float.isNaN(vinkelBS) || vinkelBS < 0){
             nan = true;
             vinkelAS = 0;
         } else{
@@ -166,7 +166,7 @@ public class TrekantBeregner extends TrekantSide{
         }
     }
 
-    void sideSelected(int vS, int mS){
+    public void sideSelected(int vS, int mS){
         if(vS > 0){
             String temp = valgtSide[vS - 1];
             if(mS == 2){
@@ -174,6 +174,46 @@ public class TrekantBeregner extends TrekantSide{
                 p.text(temp,850,665);
             } 
         }
+    }
+
+    public void setSideAL(float n){
+        sideAL = n;
+    }
+
+    public float getSideAL(){
+        return(sideAL);
+    }
+
+    public void setSideBL(float n){
+        sideBL = n;
+    }
+
+    public float getSideBL(){
+        return(sideBL);
+    }
+
+    public void setSideCL(float n){
+        sideCL = n;
+    }
+
+    public float getSideCL(){
+        return(sideCL);
+    }
+
+    public void setVinkelAS(float n){
+        vinkelAS = n;
+    }
+
+    public float getVinkelAS(){
+        return(vinkelAS);
+    }
+
+    public void setVinkelBS(float n){
+        vinkelBS = n;
+    }
+
+    public float getVinkelBS(){
+        return(vinkelBS);
     }
 }
 
