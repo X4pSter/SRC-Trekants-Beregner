@@ -109,7 +109,7 @@ void nothing(){
 
 void assignValues(){
     String temp = "";
-    if(!temp.equals(tekstFelt.tekst)){
+    if(!temp.equals(tekstFelt.getTekst())){
         if(sideSelected == 1){
             beregnerSide.setSideAL(float(tekstFelt.getTekst()));
             tekstFelt.setTekst("0");
