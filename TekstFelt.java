@@ -5,7 +5,7 @@ public class TekstFelt{
 
     private PApplet p;
 
-    public  String tekst = "";
+    private String tekst = "";
 
     private float x,y;
     private float w,h,oW;
@@ -63,5 +63,13 @@ public class TekstFelt{
         p.textAlign(p.LEFT,p.TOP);
         p.text(tekst,x + 5,y + gapToTop);
         p.stroke(0);
+    }
+
+    public void setTekst(String t){
+        tekst = t;
+    }
+
+    public String getTekst(){
+        return(tekst);
     }
 }
